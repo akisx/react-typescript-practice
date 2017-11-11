@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "prettier": "^1.8.2",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-scripts-ts": "2.8.0"
@@ -11,12 +12,18 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
   "devDependencies": {
     "@types/jest": "^21.1.6",
     "@types/node": "^8.0.51",
     "@types/react": "^16.0.22",
-    "@types/react-dom": "^16.0.3"
+    "@types/react-dom": "^16.0.3",
+    "tslint-config-prettier": "^1.6.0"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true
   }
 }
