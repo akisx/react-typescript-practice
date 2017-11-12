@@ -6,4 +6,5 @@ Boilerplate is created with `create-react-app react-typescript-practice --script
 ## Libraries
 
 - React/React DOM
-- prettier/tslint-config-prettier
+- prettier + tslint-config-prettier + tslint-plugin-prettier
+- husky + lint-staged
