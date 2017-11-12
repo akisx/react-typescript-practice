@@ -1,8 +1,5 @@
 {
-  "extends": [
-      "tslint-react", 
-      "tslint-config-prettier"
-    ],
+  "extends": ["tslint-react", "tslint-config-prettier"],
   "rulesDirectory": ["tslint-plugin-prettier"],
   "rules": {
     "ban": false,
@@ -32,13 +29,7 @@
     "no-trailing-whitespace": false,
     "no-unused-expression": true,
     "no-use-before-declare": true,
-    "prettier": [
-      true,
-      {
-        "printWidth": 120,
-        "singleQuote": true
-      }
-    ],
+    "prettier": [true],
     "radix": true,
     "switch-default": true,
     "trailing-comma": [false],
