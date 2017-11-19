@@ -3,6 +3,8 @@
 This app is just for practice.  
 Boilerplate is created with `create-react-app react-typescript-practice --scripts-version=react-scripts-ts`.
 
+This uses `'string enums'` which is available in TypeScript >=2.4.
+
 ## Libraries
 
 - React/React DOM
