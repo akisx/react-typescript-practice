@@ -37,7 +37,7 @@ const Counter = (props: Props & WithStyles<ClassKey>) => {
         <Button raised={true} color="primary" onClick={props.decrement}>
           <RemoveIcon />
         </Button>
-        <Typography type="button" className={classes.counterValue}>
+        <Typography type="body2" className={classes.counterValue}>
           count: {value}
         </Typography>
         <Button raised={true} color="primary" onClick={props.increment}>
