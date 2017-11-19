@@ -1,17 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './App';
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import { TypographyOptions } from 'material-ui/styles/createTypography';
+import { MuiThemeProvider, createMuiTheme, StyleRules } from 'material-ui/styles';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-const typography: TypographyOptions = {
-  fontFamily: '"Noto Sans JP",Roboto,"Helvetica Neue",Arial,sans-serif'
-};
-
-const theme = createMuiTheme({
-  typography: typography
+const theme: StyleRules = createMuiTheme({
+  typography: {
+    fontFamily: '"Noto Sans JP",Roboto,"Helvetica Neue",Arial,sans-serif'
+  }
 });
 
 const ThemeApp = () => {
