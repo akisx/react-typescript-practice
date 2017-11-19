@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './App';
-import { MuiThemeProvider, createMuiTheme, StyleRules } from 'material-ui/styles';
+import { MuiThemeProvider, createMuiTheme, Theme } from 'material-ui/styles';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-const theme: StyleRules = createMuiTheme({
+const theme: Theme = createMuiTheme({
   typography: {
     fontFamily: 'Roboto,"Noto Sans JP","Helvetica Neue",Meiryo,sans-serif'
   }
