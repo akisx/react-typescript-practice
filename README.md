@@ -8,4 +8,5 @@ Boilerplate is created with `create-react-app react-typescript-practice --script
 - React/React DOM
 - prettier + tslint-config-prettier + tslint-plugin-prettier
 - Material-UI@next
+- redux/react-redux
 

@@ -8,7 +8,9 @@
     "prettier": "^1.8.2",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
-    "react-scripts-ts": "2.8.0"
+    "react-redux": "^5.0.6",
+    "react-scripts-ts": "2.8.0",
+    "redux": "^3.7.2"
   },
   "scripts": {
     "start": "react-scripts-ts start",
