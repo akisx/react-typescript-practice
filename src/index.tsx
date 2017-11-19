@@ -7,7 +7,7 @@ import './index.css';
 
 const theme: StyleRules = createMuiTheme({
   typography: {
-    fontFamily: '"Noto Sans JP",Roboto,"Helvetica Neue",Arial,sans-serif'
+    fontFamily: 'Roboto,"Noto Sans JP","Helvetica Neue",Meiryo,sans-serif'
   }
 });
 
