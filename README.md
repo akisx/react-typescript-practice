@@ -12,3 +12,10 @@ This uses `'string enums'` which is available in TypeScript >=2.4.
 - Material-UI@next
 - redux/react-redux
 
+## Usage
+
+```
+git clone git@github.com:akisx/react-typescript-practice.git
+npm install
+npm start
+```
