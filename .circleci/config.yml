@@ -58,15 +58,15 @@ jobs:
           key: build-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - ~/project/build
-    deploy:
-      machine:
-        enabled: true
-      steps:
-        - restore_cache:
-          key: build-{{ .Environment.CIRCLE_SHA1 }}
-        - run:
-          name: Deploy
-          command: echo "Replace with deploy command"
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - restore_cache:
+        key: build-{{ .Environment.CIRCLE_SHA1 }}
+      - run:
+        name: Deploy
+        command: echo "Replace with deploy command"
 workflows:
   version: 2
   test-build-deploy:
