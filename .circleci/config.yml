@@ -1,8 +1,28 @@
 version: 2
 jobs:
-   build:
-     docker:
-       - image: circleci/node:latest
-     steps:
-       - checkout
-       - run: echo "hello world"
+  build:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - restore_cache:
+        key: npm-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run:
+        name: System information
+        command: |
+          echo "Node $(node -v)"
+          echo "Yarn $(yarn --version)"
+      - run:
+        name: Install dependencies
+        command: yarn
+      - run:
+        name: Build
+        command: yarn run build
+      - run:
+        name: Test
+        command: yarn test
+      - save_cache:
+        key: npm-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+        paths:
+          - ~/workspace/node_modules
+          - ~/.cache/yarn/
