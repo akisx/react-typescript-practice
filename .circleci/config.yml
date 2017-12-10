@@ -9,21 +9,34 @@ jobs:
           command: |
             echo "Node $(node -v)"
             echo "Yarn $(yarn --version)"
-  test:
+  setup:
     docker:
       - image: circleci/node:8.9
     steps:
       - checkout
+      - save_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/project
       - restore_cache:
-          key: dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: dependency-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
           command: yarn
       - save_cache:
-          key: dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: dependency-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
             - ~/.cache/yarn/
+  test:
+    docker:
+      - image: circleci/node:8.9
+    steps:
+      - restore_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          key: dependency-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run: yarn
       - run:
           name: Test
           command: CI=true yarn test
@@ -31,12 +44,11 @@ jobs:
     docker:
       - image: circleci/node:8.9
     steps:
-      - checkout
       - restore_cache:
-          key: dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install dependencies
-          command: yarn
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          key: dependency-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run: yarn
       - run:
           name: Build
           command: CI=true yarn run build
@@ -47,7 +59,10 @@ workflows:
   test-build:
     jobs:
       - info
-      - test
+      - setup
+      - test:
+          requires:
+            - setup
       - build:
           requires:
             - test
