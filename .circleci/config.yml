@@ -2,27 +2,30 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:8.9
     steps:
       - checkout
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm'
       - restore_cache:
-        key: npm-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run:
-        name: System information
-        command: |
-          echo "Node $(node -v)"
-          echo "Yarn $(yarn --version)"
+          name: System information
+          command: |
+            echo "Node $(node -v)"
+            echo "Yarn $(yarn --version)"
       - run:
-        name: Install dependencies
-        command: yarn
-      - run:
-        name: Build
-        command: yarn run build
-      - run:
-        name: Test
-        command: yarn test
+          name: Install dependencies
+          command: yarn
       - save_cache:
-        key: npm-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
-        paths:
-          - ~/workspace/node_modules
-          - ~/.cache/yarn/
+          key: dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+            - ~/.cache/yarn/
+      - run:
+          name: Test
+          command: yarn test
+      - run:
+          name: Build
+          command: yarn run build
