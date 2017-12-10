@@ -29,3 +29,5 @@ jobs:
       - run:
           name: Build
           command: yarn run build
+      - store_artifacts:
+          path: ./public
